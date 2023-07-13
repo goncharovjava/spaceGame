@@ -46,6 +46,7 @@ public class Space {
 
     }
 
+
     public void run(){
 
     }
@@ -53,4 +54,12 @@ public class Space {
     public void draw(){
 
     }
+
+    public  void sleep(int ms){
+
+    }
+
+
+
+
 }
