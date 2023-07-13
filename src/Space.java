@@ -45,4 +45,12 @@ public class Space {
     public static void main(String[] args){
 
     }
+
+    public void run(){
+
+    }
+
+    public void draw(){
+
+    }
 }
