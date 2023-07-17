@@ -46,4 +46,9 @@ public abstract class BaseObject {
     public void die(){
         this.isAlive = false;
     }
+    public boolean isIntersect(BaseObject o){
+        if(Math.hypot(getX()-o.getX(), getY()-o.getY()) < Math.max(getRadius(), o.getRadius())){
+            return true;
+        }else return false;
+    }
 }
