@@ -39,4 +39,11 @@ public abstract class BaseObject {
     public double getRadius() {
         return radius;
     }
+    public void draw(){}
+
+    public void move(){}
+
+    public void die(){
+        this.isAlive = false;
+    }
 }
