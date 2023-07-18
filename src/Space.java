@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Space {
+
     private int width;
     private int height;
+
     private SpaceShip ship;
     private List<Ufo> ufos = new ArrayList<>();
     private List<Rocket> rockets = new ArrayList<>();
@@ -14,12 +16,28 @@ public class Space {
         this.height = height;
     }
 
-    public int getHeight() {
-        return height;
+    public void run() {
+    }
+
+    public void draw() {
+    }
+
+    public void sleep(int ms) {
+    }
+
+    public static void main(String... args) {
+    }
+
+    public void setShip(SpaceShip ship) {
+        this.ship = ship;
     }
 
     public int getWidth() {
         return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     public SpaceShip getShip() {
@@ -37,29 +55,4 @@ public class Space {
     public List<Bomb> getBombs() {
         return bombs;
     }
-
-    public void setShip(SpaceShip ship) {
-        this.ship = ship;
-    }
-
-    public static void main(String[] args){
-
-    }
-
-
-    public void run(){
-
-    }
-
-    public void draw(){
-
-    }
-
-    public  void sleep(int ms){
-
-    }
-
-
-
-
 }
