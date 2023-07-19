@@ -4,11 +4,19 @@ public class Rocket extends BaseObject {
         super(x, y, 1);
     }
 
-    public void move(){
-        y--;
+    /**
+     * Метод рисует свой объект на "канвасе".
+     */
+    @Override
+    public void draw(Canvas canvas) {
+        canvas.setPoint(x, y, 'R');
     }
 
-    public void draw(Canvas canvas){
-        canvas.setPoint(x, y, 'R');
+    /**
+     * Двигаем себя вверх на один ход.
+     */
+    @Override
+    public void move() {
+        y--;
     }
 }
