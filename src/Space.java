@@ -45,7 +45,7 @@ public class Space {
                     //Если "стрелка вправо" - сдвинуть фигурку вправо
                 else if (event.getKeyCode() == KeyEvent.VK_RIGHT)
                     ship.moveRight();
-                    //Если "пробел" - стреляем
+                    //Если "пробел" - запускаем шарик
                 else if (event.getKeyCode() == KeyEvent.VK_SPACE)
                     ship.fire();
             }
@@ -79,28 +79,34 @@ public class Space {
      * Двигаем все объекты игры
      */
     public void moveAllItems() {
-        getAllItems().forEach(BaseObject :: move);
-        //нужно получить список всех игрвых объектов и у каждого вызвать метод move().
+        for (BaseObject object : getAllItems()) {
+            object.move();
+        }
     }
 
     /**
      * Метод возвращает общий список, который содержит все объекты игры
      */
     public List<BaseObject> getAllItems() {
-        List<BaseObject> o = new ArrayList<>();
-        o.addAll(bombs);
-        o.addAll(rockets);
-        o.addAll(ufos);
-        o.add(ship);
-        return o;
-        //нужно создать новый список и положить в него все игровые объекты.
+        ArrayList<BaseObject> list = new ArrayList<>(ufos);
+        list.add(ship);
+        list.addAll(bombs);
+        list.addAll(rockets);
+        return list;
     }
 
     /**
      * Создаем новый НЛО. 1 раз на 10 вызовов.
      */
     public void createUfo() {
-        //тут нужно создать новый НЛО.
+        if (ufos.size() > 0) return;
+
+        int random10 = (int) (Math.random() * 10);
+        if (random10 == 0) {
+            double x = Math.random() * width;
+            double y = Math.random() * height / 2;
+            ufos.add(new Ufo(x, y));
+        }
     }
 
     /**
@@ -109,7 +115,15 @@ public class Space {
      * б) падение ниже края игрового поля (бомба умирает)
      */
     public void checkBombs() {
-        //тут нужно проверить все возможные столкновения для каждой бомбы.
+        for (Bomb bomb : bombs) {
+            if (ship.isIntersect(bomb)) {
+                ship.die();
+                bomb.die();
+            }
+
+            if (bomb.getY() >= height)
+                bomb.die();
+        }
     }
 
     /**
@@ -118,19 +132,42 @@ public class Space {
      * б) вылет выше края игрового поля (ракета умирает)
      */
     public void checkRockets() {
-        //тут нужно проверить все возможные столкновения для каждой ракеты.
+        for (Rocket rocket : rockets) {
+            for (Ufo ufo : ufos) {
+                if (ufo.isIntersect(rocket)) {
+                    ufo.die();
+                    rocket.die();
+                }
+            }
+
+            if (rocket.getY() <= 0)
+                rocket.die();
+        }
     }
 
     /**
-     * Удаляем умершие объекты (бомбы, ракеты, НЛО) из списков
+     * Удаляем умерсшие объекты (бомбы, ракеты, НЛО) из списков
      */
     public void removeDead() {
-        //тут нужно удалить все умершие объекты из списков (кроме космического корабля)
+        for (BaseObject object : new ArrayList<BaseObject>(bombs)) {
+            if (!object.isAlive())
+                bombs.remove(object);
+        }
+
+        for (BaseObject object : new ArrayList<BaseObject>(rockets)) {
+            if (!object.isAlive())
+                rockets.remove(object);
+        }
+
+        for (BaseObject object : new ArrayList<BaseObject>(ufos)) {
+            if (!object.isAlive())
+                ufos.remove(object);
+        }
     }
 
     /**
      * Отрисовка всех объектов игры:
-     * а) заполняем весь холст точками.
+     * а) заполняем весь холст точесками.
      * б) отрисовываем все объекты на холст.
      */
     public void draw(Canvas canvas) {
