@@ -4,7 +4,7 @@ public class Bomb extends BaseObject {
     }
 
     /**
-     * Отрисовываем себя на холсте.
+     * РћС‚СЂРёСЃРѕРІС‹РІР°РµРј СЃРµР±СЏ РЅР° С…РѕР»СЃС‚Рµ.
      */
     @Override
     public void draw(Canvas canvas) {
@@ -12,7 +12,7 @@ public class Bomb extends BaseObject {
     }
 
     /**
-     * Двигаем себя вниз на один ход.
+     * Р”РІРёРіР°РµРј СЃРµР±СЏ РІРЅРёР· РЅР° РѕРґРёРЅ С…РѕРґ.
      */
     @Override
     public void move() {

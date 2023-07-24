@@ -5,7 +5,7 @@ public class Rocket extends BaseObject {
     }
 
     /**
-     * Метод рисует свой объект на "канвасе".
+     * РњРµС‚РѕРґ СЂРёСЃСѓРµС‚ СЃРІРѕР№ РѕР±СЉРµРєС‚ РЅР° "РєР°РЅРІР°СЃРµ".
      */
     @Override
     public void draw(Canvas canvas) {
@@ -13,7 +13,7 @@ public class Rocket extends BaseObject {
     }
 
     /**
-     * Двигаем себя вверх на один ход.
+     * Р”РІРёРіР°РµРј СЃРµР±СЏ РІРІРµСЂС… РЅР° РѕРґРёРЅ С…РѕРґ.
      */
     @Override
     public void move() {

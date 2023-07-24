@@ -1,10 +1,10 @@
 public abstract class BaseObject {
-    //координаты
+    //РєРѕРѕСЂРґРёРЅР°С‚С‹
     protected double x;
     protected double y;
-    //радиус объекта
+    //СЂР°РґРёСѓСЃ РѕР±СЉРµРєС‚Р°
     protected double radius;
-    //состояние объект - жив ли объект
+    //СЃРѕСЃС‚РѕСЏРЅРёРµ РѕР±СЉРµРєС‚ - Р¶РёРІ Р»Рё РѕР±СЉРµРєС‚
     private boolean isAlive;
 
     public BaseObject(double x, double y, double radius) {
@@ -39,21 +39,21 @@ public abstract class BaseObject {
     }
 
     /**
-     * Метод рисует свой объект на "канвасе".
+     * РњРµС‚РѕРґ СЂРёСЃСѓРµС‚ СЃРІРѕР№ РѕР±СЉРµРєС‚ РЅР° "РєР°РЅРІР°СЃРµ".
      */
     public void draw(Canvas canvas) {
         //do nothing
     }
 
     /**
-     * Двигаем себя на один ход.
+     * Р”РІРёРіР°РµРј СЃРµР±СЏ РЅР° РѕРґРёРЅ С…РѕРґ.
      */
     public void move() {
         //do nothing
     }
 
     /**
-     * Проверяем - не выходит ли (x,y) за границы.
+     * РџСЂРѕРІРµСЂСЏРµРј - РЅРµ РІС‹С…РѕРґРёС‚ Р»Рё (x,y) Р·Р° РіСЂР°РЅРёС†С‹.
      */
     public void checkBorders(double minx, double maxx, double miny, double maxy) {
         if (x < minx) x = minx;
@@ -75,7 +75,7 @@ public abstract class BaseObject {
     }
 
     /**
-     * Проверяем - пересекаются ли переданный(o) и наш(this) объекты.
+     * РџСЂРѕРІРµСЂСЏРµРј - РїРµСЂРµСЃРµРєР°СЋС‚СЃСЏ Р»Рё РїРµСЂРµРґР°РЅРЅС‹Р№(o) Рё РЅР°С€(this) РѕР±СЉРµРєС‚С‹.
      */
     public boolean isIntersect(BaseObject o) {
         double dx = x - o.x;
